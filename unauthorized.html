@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/error.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="error-container">
+  <div class="error-icon">⛔</div>
+  <h1 class="error-title">Πρόσβαση Απαγορευμένη</h1>
+  <p class="error-message">
+    Δεν έχετε τα απαραίτητα δικαιώματα για να προβάλετε αυτή τη σελίδα.
+    Παρακαλώ επικοινωνήστε με τον διαχειριστή του συστήματος εάν πιστεύετε
+    ότι αυτό είναι λάθος.
+  </p>
+  <a href="{{ url_for('main.dashboard') }}" class="error-btn">
+    Επιστροφή στην Αρχική
+  </a>
+</div>
+{% endblock %}

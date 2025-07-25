@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/schedule.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="schedule-container">
+  <h1 class="page-title">📅 Διαχείριση Βαρδιών</h1>
+  
+  <div class="card add-shift-card">
+    <h2 class="card-title">➕ Προσθήκη Νέας Βάρδιας</h2>
+    <form id="shiftForm" method="post" class="shift-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="user_id">Εργαζόμενος</label>
+          <select name="user_id" id="user_id" class="form-select" required>
+            <option value="" selected disabled>-- Επιλέξτε --</option>
+            {% for user in users %}
+            <option value="{{ user.id }}">{{ user.username }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="position">Θέση</label>
+          <select name="position" id="position" class="form-select" required>
+            <option value="waiter">Σερβιτόρος</option>
+            <option value="barista">Μπάρμαν</option>
+            <option value="chef">Μάγειρας</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="date">Ημερομηνία</label>
+          <input type="date" name="date" id="date" class="form-input" required>
+        </div>
+        
+        <div class="form-group time-group">
+          <label>Ώρες</label>
+          <div class="time-inputs">
+            <input type="time" name="start" class="form-input time-input" required>
+            <span class="time-separator">→</span>
+            <input type="time" name="end" class="form-input time-input" required>
+          </div>
+          <small class="time-note">Για νυχτερινές βάρδιες (π.χ. 21:00 - 04:00), εισάγετε τις πραγματικές ώρες</small>
+        </div>
+      </div>
+      
+      <button type="submit" class="submit-btn">💾 Αποθήκευση</button>
+    </form>
+  </div>
+
+  <div class="card shifts-card">
+    <h2 class="card-title">📋 Προγραμματισμένες Βάρδιες</h2>
+    <div class="table-container">
+      <table class="shifts-table">
+        <thead>
+          <tr>
+            <th>Εργαζόμενος</th>
+            <th>Θέση</th>
+            <th>Ημερομηνία</th>
+            <th>Ώρες</th>
+            <th>Ημερομίσθιο</th>
+            <th>Ενέργειες</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for shift in shifts %}
+          <tr>
+            <td>{{ shift.user.username }}</td>
+            <td class="position-cell">
+              {% if shift.position == 'waiter' %}
+                <span class="badge waiter-badge">Σερβιτόρος</span>
+              {% elif shift.position == 'barista' %}
+                <span class="badge barista-badge">Μπάρμαν</span>
+              {% elif shift.position == 'chef' %}
+                <span class="badge chef-badge">Μάγειρας</span>
+              {% endif %}
+            </td>
+            <td>{{ shift.date }}</td>
+            <td>{{ shift.start_time }} - {{ shift.end_time }}</td>
+            <td class="wage-cell">{{ shift.daily_wage }}€</td>
+            <td>
+              <form action="{{ url_for('main.delete_shift', shift_id=shift.id) }}" method="POST" class="delete-form">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="delete-btn" onclick="return confirm('Είστε σίγουρος;')">🗑️</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

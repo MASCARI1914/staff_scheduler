@@ -1,0 +1,65 @@
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eaeaea;
+}
+
+/* Βελτίωση του navigation */
+nav {
+  background: #2c3e50;
+  padding: 1rem 2rem;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 1.5rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Flash messages styling */
+.flash-messages {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+.flash-message {
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.flash-message.success {
+  background: #2ecc71;
+}
+
+.flash-message.error {
+  background: #e74c3c;
+}
+
+.flash-message.info {
+  background: #3498db;
+}

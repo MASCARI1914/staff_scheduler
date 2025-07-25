@@ -1,0 +1,198 @@
+/* Βασική Δομή */
+.schedule-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.page-title {
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* Κάρτες */
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid #eaeaea;
+}
+
+.card-title {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Φόρμα */
+.shift-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.form-select, .form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-select:focus, .form-input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  outline: none;
+}
+
+.time-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.time-inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.time-separator {
+  font-weight: bold;
+  color: #7f8c8d;
+  padding: 0 0.5rem;
+}
+
+/* Κουμπιά */
+.submit-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.submit-btn:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.delete-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background: #c0392b;
+}
+
+/* Πίνακας */
+.table-container {
+  overflow-x: auto;
+}
+
+.shifts-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 1rem;
+}
+
+.shifts-table th {
+  background: #f8f9fa;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #2c3e50;
+  border-bottom: 2px solid #eaeaea;
+}
+
+.shifts-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #eaeaea;
+  vertical-align: middle;
+}
+
+.shifts-table tr:hover td {
+  background-color: #f5f7fa;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.waiter-badge {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.barista-badge {
+  background: #e8f5e9;
+  color: #388e3c;
+}
+
+.chef-badge {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+/* Wage cell */
+.wage-cell {
+  font-weight: 600;
+  color: #27ae60;
+}
+
+/* Delete form */
+.delete-form {
+  display: inline;
+}
+
+
+.time-note {
+    display: block;
+    margin-top: 0.5rem;
+    color: #7f8c8d;
+    font-size: 0.8rem;
+}

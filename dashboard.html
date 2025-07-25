@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+  <h2 class="page-title">👋 Γεια σας, {{ current_user.username }}!</h2>
+  
+  <div class="stats-card">
+    <div class="stat-item">
+      <span class="stat-label">Σύνολο Βαρδιών</span>
+      <span class="stat-value">{{ shifts|length }}</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Σύνολο Εσόδων</span>
+      <span class="stat-value">{{ total_wage }}€</span>
+    </div>
+  </div>
+
+  <div class="card shifts-card">
+    <h3>🗓️ Οι Βάρδιές μου</h3>
+    <table class="user-shifts-table">
+      <thead>
+        <tr>
+          <th>Ημερομηνία</th>
+          <th>Ώρες</th>
+          <th>Θέση</th>
+          <th>Πληρωμή</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for shift in shifts %}
+        <tr>
+          <td>{{ shift.date }}</td>
+          <td>{{ shift.start_time }} - {{ shift.end_time }}</td>
+          <td>
+            {% if shift.position == 'waiter' %}Σερβιτόρος
+            {% elif shift.position == 'barista' %}Μπάρμαν
+            {% else %}{{ shift.position }}{% endif %}
+          </td>
+          <td class="wage-cell">{{ shift.daily_wage }}€</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
