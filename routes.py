@@ -33,7 +33,7 @@ def login():
         login_user(user)
         return redirect(url_for("main.dashboard"))
     
-    return render_template("login.html")
+    return render_template("index.html")
 from sqlalchemy.exc import IntegrityError  # Προσθήκη στο επάνω μέρος του αρχείου
 
 @main.route("/register", methods=["GET", "POST"])
